@@ -1,4 +1,5 @@
 
+
 public class TimeParser {
 	private static final int MINS_PER_HR = 60;
 	private static final int SECS_PER_MIN = 60;

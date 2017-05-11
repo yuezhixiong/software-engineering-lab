@@ -1,10 +1,11 @@
+
 import static org.junit.Assert.*;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-public class testParseTimeToSeconds {
+public class TestParseTimeToSeconds {
 	@Test
 	public void testStatement() {
 		assertEquals(48225, TimeParser.parseTimeToSeconds("1:23:45 pm"));
