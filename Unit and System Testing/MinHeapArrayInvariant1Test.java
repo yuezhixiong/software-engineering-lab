@@ -52,33 +52,22 @@ public class MinHeapArrayInvariant1Test {
 		heap.clear();
 		assertTrue(invariantHolds());
 	}
-	
-	//Write a test suite that tests the following additional class invariant:
-	//"For all elements in the array, array[n] <= array[2*n] and array[n] <= array[2*n+1]"
-	@Test
-	public void testArray() {
-		fillWithRandomValues(VALUES_TO_TEST);
-		int array[] = new int[heap.size()];
-		for (int i = 0; i < heap.size(); i++) {
-			array[i] = heap.pop();
-		}
-		for (int i = 0; i < VALUES_TO_TEST/2; i++) {
-			assertTrue(array[i]<=array[2*i] && array[i]<=array[2*i+1]);
-		}
-	}
-	
 
 	private boolean invariantHolds() {
 		Integer top = heap.peek();
 		if (top == null) {
 			return true;
 		}
-		Integer[] contents = new Integer[heap.size()];
-		Integer min = Collections.min(Arrays.asList(heap.toArray(contents)));
-		if (min > top) {
-			System.out.println("Whoops!");
+		int array[] = new int[heap.size()];
+		array = heap.toArray(array);
+		System.out.println(Arrays.toString(array));
+		for (int i = 0; i < (heap.size() - 1) / 2; i++) {
+			if (array[i] > array[2 * i + 1] && array[i] > array[2 * i + 2]) {
+				System.out.println("Whoops!");
+				return false;
+			}
 		}
-		return min <= top;
+		return true;
 	}
 
 	private void fillWithRandomValues(long numValues) {

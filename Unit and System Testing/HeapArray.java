@@ -187,14 +187,9 @@ public class HeapArray<E extends Comparable<E>> implements Iterable<E> {
 	 *         array.
 	 */
 	@SuppressWarnings("unchecked")
-	public <T> T[] toArray(T[] destinationArray) {
-		if (size > destinationArray.length) {
-			Class<?> ct = destinationArray.getClass().getComponentType();
-			destinationArray = (T[]) Array.newInstance(ct, size);
-		}
-		System.arraycopy(elements, 0, destinationArray, 0, size);
-		if (size < destinationArray.length) {
-			destinationArray[size] = null;
+	public int[] toArray(int[] destinationArray) {
+		for(int i=0;i<size;i++) {
+			destinationArray[i] = (int) (elements[i]);
 		}
 		return destinationArray;
 	}
