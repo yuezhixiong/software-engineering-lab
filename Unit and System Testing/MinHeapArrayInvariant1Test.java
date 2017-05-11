@@ -1,3 +1,5 @@
+
+
 import static org.junit.Assert.*;
 import java.util.Arrays;
 import java.util.Collections;
@@ -58,11 +60,10 @@ public class MinHeapArrayInvariant1Test {
 		if (top == null) {
 			return true;
 		}
-		int array[] = new int[heap.size()];
-		array = heap.toArray(array);
-		System.out.println(Arrays.toString(array));
+		Integer[] contents = new Integer[heap.size()];
+		contents = heap.toArray(contents);
 		for (int i = 0; i < (heap.size() - 1) / 2; i++) {
-			if (array[i] > array[2 * i + 1] || array[i] > array[2 * i + 2]) {
+			if (contents[i] > contents[2 * i + 1] || contents[i] > contents[2 * i + 2]) {
 				System.out.println("Whoops!");
 				return false;
 			}

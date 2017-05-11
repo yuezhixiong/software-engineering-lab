@@ -1,3 +1,5 @@
+
+
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -186,10 +188,16 @@ public class HeapArray<E extends Comparable<E>> implements Iterable<E> {
 	 * @return the new array containing the elements contained in the heap
 	 *         array.
 	 */
+
 	@SuppressWarnings("unchecked")
-	public int[] toArray(int[] destinationArray) {
-		for(int i=0;i<size;i++) {
-			destinationArray[i] = (int) (elements[i]);
+	public <T> T[] toArray(T[] destinationArray) {
+		if (size > destinationArray.length) {
+			Class<?> ct = destinationArray.getClass().getComponentType();
+			destinationArray = (T[]) Array.newInstance(ct, size);
+		}
+		System.arraycopy(elements, 0, destinationArray, 0, size);
+		if (size < destinationArray.length) {
+			destinationArray[size] = null;
 		}
 		return destinationArray;
 	}
