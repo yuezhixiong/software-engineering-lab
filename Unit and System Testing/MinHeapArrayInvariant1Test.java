@@ -62,7 +62,7 @@ public class MinHeapArrayInvariant1Test {
 		array = heap.toArray(array);
 		System.out.println(Arrays.toString(array));
 		for (int i = 0; i < (heap.size() - 1) / 2; i++) {
-			if (array[i] > array[2 * i + 1] && array[i] > array[2 * i + 2]) {
+			if (array[i] > array[2 * i + 1] || array[i] > array[2 * i + 2]) {
 				System.out.println("Whoops!");
 				return false;
 			}
